@@ -192,7 +192,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                             folded             : false,
                             hidden             : false,
                             position           : 'left',
-                            variant            : 'vertical-style-1'
+                            variant            : 'horizontal-layout-1'
                         },
                         toolbar  : {
                             background           : 'fuse-white-500',
