@@ -1,0 +1,149 @@
+<div id="login" fxLayout="column">
+
+  <div id="login-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+    <div class="wrapper">
+      <div class="main-title">
+        Registration
+      </div>
+      <mat-horizontal-stepper [linear]="isLinear" #stepper class="stepper">
+        <!-- [stepControl]="myForm" -->
+        <mat-step>
+          <ng-template matStepLabel>First step</ng-template>
+          <div id="login-form">
+
+            <form name="myForm" [formGroup]="myForm" novalidate>
+
+              <mat-form-field>
+                <input matInput [(ngModel)]="data.name" placeholder="Name" formControlName="name" required>
+                <mat-error *ngIf="myForm.get('name').hasError('required')">Name is required</mat-error>
+                <mat-error *ngIf="!myForm.get('name').hasError('required') && myForm.get('name').hasError('name')">Please enter a valid name</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput [(ngModel)]="data.email" placeholder="Email" formControlName="email" required>
+                <mat-error *ngIf="myForm.get('email').hasError('required')">Email is required</mat-error>
+                <mat-error *ngIf="!myForm.get('email').hasError('required') && myForm.get('email').hasError('email')">Please enter a valid email address</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput [(ngModel)]="data.phone" placeholder="Mobile number" formControlName="phone" required>
+                <mat-error *ngIf="myForm.get('phone').hasError('required')">Mobile number is required</mat-error>
+                <mat-error *ngIf="!myForm.get('phone').hasError('required') && myForm.get('phone').hasError('phone')">Please enter a valid mobile namber</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input [(ngModel)]="data.password" matInput type="password" placeholder="Password" formControlName="password">
+                <mat-error>
+                  Password is required
+                </mat-error>
+              </mat-form-field>
+
+              <div *ngIf="errorMessege && myForm.invalid" class="message-box error fs-12 m-t-15 m-b-10">
+                Login Failed, Please check your user name and password.
+              </div>
+              <div *ngIf="errorMess" class="message-box error fs-12 m-t-15 m-b-10">
+                {{errorMess}}
+              </div>
+
+            </form>
+
+          </div>
+          <div>
+            <!-- [disabled]="myForm.invalid" -->
+            <button mat-raised-button color="accent" class="submit-button" matStepperNext [ngClass]="{'inactive-style': myForm.invalid}">Next</button>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <ng-template matStepLabel>Second step</ng-template>
+          <div class="caption">
+            Choose address
+          </div>
+
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="accent" class="submit-button" matStepperNext>Next</button>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup">
+          <ng-template matStepLabel>Third step</ng-template>
+          <div class="caption">
+            Attach legal documents
+            <div class="sub-caption">
+              (FSSAI CERTIFICATION, OWNER ADHAR CARD, PAN CARD)
+            </div>
+          </div>
+          <div class="upload-wrap">
+
+            <button (click)="file.click()" mat-mini-fab color="accent">
+              <mat-icon aria-label="Example icon-button with a heart icon">cloud_upload</mat-icon>
+            </button>
+            <!-- accept=".jpg, .jpeg, .png" -->
+            <input type="file" #file hidden style="display:none;">
+
+            <div class="full-width">
+              <p class="df ai-c jc-b">
+                <span>
+                  file name
+                </span>
+                <span class="c-p df">
+                  <i class="material-icons">
+                    close
+                  </i>
+                </span>
+              </p>
+              <p class="df ai-c jc-b">
+                <span>
+                  file name
+                </span>
+                <span class="c-p df">
+                  <i class="material-icons">
+                    close
+                  </i>
+                </span>
+              </p>
+              <p class="df ai-c jc-b">
+                <span>
+                  file name
+                </span>
+                <span class="c-p df">
+                  <i class="material-icons">
+                    close
+                  </i>
+                </span>
+              </p>
+            </div>
+          </div>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="accent" class="submit-button" matStepperNext>Next</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Final step</ng-template>
+
+          <div class="caption">
+            Billing Details
+          </div>
+
+          <div id="login-form">
+            <form name="billingForm" [formGroup]="billingForm" novalidate>
+              <mat-form-field>
+                <input matInput [(ngModel)]="data.billing" placeholder="Billing Details" formControlName="billing" required>
+                <mat-error *ngIf="billingForm.get('billing').hasError('required')">Billing Details is required</mat-error>
+                <mat-error *ngIf="!billingForm.get('billing').hasError('required') && billingForm.get('billing').hasError('billing')">Please enter a valid billing details</mat-error>
+              </mat-form-field>
+            </form>
+          </div>
+
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="accent" class="submit-button">Confirm</button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+
+  </div>
+
+</div>

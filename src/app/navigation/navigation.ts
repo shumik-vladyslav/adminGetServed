@@ -22,12 +22,20 @@ export const navigation: FuseNavigation[] = [
                 }
             },
             {
-                id       : 'Erase Request',
-                title    : 'Erase Request',
+                id       : 'login',
+                title    : 'login',
                 // translate: 'NAV.SAMPLE.TITLE',
                 type     : 'item',
                 icon     : 'equalizer',
                 url      : '/login'
+            },
+            {
+                id       : 'register',
+                title    : 'register',
+                // translate: 'NAV.SAMPLE.TITLE',
+                type     : 'item',
+                icon     : 'equalizer',
+                url      : '/register'
             },
         ]
     }

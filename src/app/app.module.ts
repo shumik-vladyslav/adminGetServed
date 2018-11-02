@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { MatButtonModule, MatIconModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatInputModule, MatStepperModule } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { TranslateModule } from '@ngx-translate/core';
 import 'hammerjs';
@@ -20,11 +20,16 @@ import { SampleModule } from 'app/main/sample/sample.module';
 import { SignInComponent } from './main/sign-in/sign-in.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { SignUpComponent } from './main/sign-up/sign-up.component';
 
 const appRoutes: Routes = [
     {
         path     : 'login',
         component: SignInComponent
+    },
+    {
+        path     : 'register',
+        component: SignUpComponent
     },
 ];
 
@@ -32,6 +37,7 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent,
         SignInComponent,
+        SignUpComponent,
     ],
     imports : [
         BrowserModule,
@@ -50,6 +56,8 @@ const appRoutes: Routes = [
         MatFormFieldModule,
         ReactiveFormsModule,
         MatInputModule,
+        MatStepperModule,
+        
         // Fuse modules
         FuseModule.forRoot(fuseConfig),
         FuseProgressBarModule,
